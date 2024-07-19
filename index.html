@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculo de Pintura</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" >
+</head>
+<body>
+    <div class="container w-100">
+        <div class="input-group input-group-sm mb-3  justify-content-center">
+            <!-- <h3 class="text-center">Calculadora de Pintura</h3> -->
+             <img src="nome2.svg" alt="calculadora-de-pintura" class=" img-fluid w-75">
+          </div>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">H</span>
+            <input type="number" id="altura" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Digite a Altura">
+          </div>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text" >L</span>
+            <input type="number" id="largura" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Digite a Largura">
+          </div>
+
+          
+          <div class="input-group mb-3">
+            <span class="input-group-text" >C</span>
+            <input type="number" id="catalisador" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Digite o Volume do Catalisador">
+          </div>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text" >T</span>
+            <input type="number" id="vol_tinta" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Digite o Volume da Tinta">
+          </div>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text" >Q</span>
+            <input type="number" id="qtd_preparo" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Digite a Quantiade do Preparo da Tinta">
+          </div>
+
+          <div class="input-group mb-3 justify-content-center">
+            <span id="result" class="input-group-text d-none" >
+                Área a ser pintada:  <span id="area" class="m-2"> </span>
+            </span>
+          </div>
+
+          <div class="input-group mb-3 justify-content-center">
+            <span id="result_volume" class="input-group-text d-none" >
+                Volume do Catalisador:  <span id="volume" class="m-2"> </span>
+            </span>
+          </div>
+
+
+          <div class="input-group mb-3 d-flex justify-content-center">
+            <button type="button" class="btn btn-primary" id="calcular">Calcular</button>
+          </div>
+
+
+          <div class="input-group mb-3 d-flex justify-content-center">
+            <span>
+              Desenvolvido Por:<br>
+              <img src="https://sp.senai.br/images/senai.svg" alt="logo-senai">
+
+            </span>
+          </div>
+    </div>
+
+      <script>
+
+        let btn = document.querySelector('#calcular');
+
+        btn.addEventListener('click', () => {
+            let h = document.querySelector('#altura').value;
+            let l = document.querySelector('#largura').value;
+            let result =  document.querySelector('#result');
+            let area =  document.querySelector('#area');
+
+            let result_volume =  document.querySelector('#result_volume');
+            let volume =  document.querySelector('#volume');
+
+            let c = document.querySelector('#catalisador').value;
+            let t = document.querySelector('#vol_tinta').value;
+            let q = document.querySelector('#qtd_preparo').value;
+
+            //console.log(`Altura: ${h}, largura: ${l}`);
+
+           calcularArea(h,l)
+           
+            calculoVolume(c,t,q)
+
+        });
+
+        function calcularArea(h,l){
+            let calculo = l * h
+            console.log(`area a ser pintada: ${calculo}m²`);
+            result.classList.remove('d-none');
+            area.innerHTML = ` ${calculo}m²`
+
+            // Limpa os campos de entrada após o cálculo
+            document.querySelector('#altura').value = '';
+            document.querySelector('#largura').value = '';
+        };
+
+
+        function calculoVolume(c,t,q){
+          let calcaulo_vol = (c / t) * q
+          console.log(`Volume do Catalisador: ${calcaulo_vol}L`);
+           result_volume.classList.remove('d-none');
+           volume.innerHTML = ` ${calcaulo_vol}L.`    
+
+
+             // Limpa os campos de entrada após o cálculo
+             document.querySelector('#catalisador').value = '';
+            document.querySelector('#vol_tinta').value = '';
+            document.querySelector('#qtd_preparo').value = '';
+        }
+
+      </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
+</body>
+</html>
+
+
+
